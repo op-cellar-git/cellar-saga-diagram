@@ -772,21 +772,25 @@
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="PrelockValidationBegin" Id="CellarCloud_wp1_tra2" To="LockBegin">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/PrelockValidationEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="LockBegin" Id="CellarCloud_wp1_tra3" To="PostlockValidationBegin">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/LockEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="IngestBegin-Virtuoso" Id="CellarCloud_wp1_tra7" To="IngestBegin-S3">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/IngestEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="IngestBegin-S3" Id="CellarCloud_wp1_tra8" To="IngestBegin-ES">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/IngestEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
@@ -794,6 +798,7 @@
                 <xpdl:Transition From="DependencyIndexationBegin" Id="CellarCloud_wp1_tra11" To="UnlockBegin">
                     <xpdl:Condition Type="CONDITION">!compensation<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/DependencyIndexationEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="LABEL" ToolId="JaWE">
@@ -802,33 +807,35 @@
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="UnlockBegin" Id="CellarCloud_wp1_tra12" To="CleanupBegin">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/UnlockEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="IngestBegin-Virtuoso" Id="CellarCloud_wp1_tra13" To="CompensateBegin-Virtuoso">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="IngestBegin-S3" Id="CellarCloud_wp1_tra14" To="CompensateBegin-S3">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
-                    <xpdl:ExtendedAttributes>
-                        <xpdl:ExtendedAttribute Name="comp"/>
-                    </xpdl:ExtendedAttributes>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="IngestBegin-ES" Id="CellarCloud_wp1_tra15" To="CompensateBegin-ES">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="DirectIndexationBegin" Id="CellarCloud_wp1_tra16" To="DirectIndexationBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="575" YCoordinate="360"/>
@@ -843,30 +850,35 @@
                 </xpdl:Transition>
                 <xpdl:Transition From="PostlockValidationBegin" Id="CellarCloud_wp1_tra18" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="PrelockValidationBegin" Id="CellarCloud_wp1_tra19" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="LockBegin" Id="CellarCloud_wp1_tra20" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="SCBDInfBegin" Id="CellarCloud_wp1_tra21" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="SnapshotDbBegin" Id="CellarCloud_wp1_tra22" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="434" YCoordinate="260"/>
@@ -875,6 +887,7 @@
                 </xpdl:Transition>
                 <xpdl:Transition From="UnlockBegin" Id="CellarCloud_wp1_tra23" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="344" YCoordinate="289"/>
@@ -884,6 +897,7 @@
                 </xpdl:Transition>
                 <xpdl:Transition From="CleanupBegin" Id="CellarCloud_wp1_tra24" To="CleanupBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="182" YCoordinate="272"/>
@@ -893,6 +907,7 @@
                 </xpdl:Transition>
                 <xpdl:Transition From="DependencyIndexationBegin" Id="CellarCloud_wp1_tra25" To="DependencyIndexationBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="400" YCoordinate="436"/>
@@ -904,24 +919,28 @@
                     <xpdl:Condition Type="DEFAULTEXCEPTION">
                         <xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="InferringCDMBegin" Id="saga_wp1_tra3" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="CDM2SHACLBegin" Id="saga_wp1_tra4" To="UnlockBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="CompensateBegin-ES" Id="saga_wp1_tra5" To="CompensateBegin-ES">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="766" YCoordinate="457"/>
@@ -931,6 +950,7 @@
                 </xpdl:Transition>
                 <xpdl:Transition From="CompensateBegin-S3" Id="saga_wp1_tra6" To="CompensateBegin-S3">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="872" YCoordinate="459"/>
@@ -940,6 +960,7 @@
                 </xpdl:Transition>
                 <xpdl:Transition From="CompensateBegin-Virtuoso" Id="saga_wp1_tra7" To="CompensateBegin-Virtuoso">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="1024" YCoordinate="456"/>
@@ -949,12 +970,14 @@
                 </xpdl:Transition>
                 <xpdl:Transition From="PushingBegin" Id="saga_wp1_tra1" To="CompensatePushingBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="CompensatePushingBegin" Id="saga_wp1_tra10" To="CompensatePushingBegin">
                     <xpdl:Condition Type="DEFAULTEXCEPTION"/>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/fail</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="204,0,0" IsVisible="true" Style="NO_ROUTING_BEZIER" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="1167" YCoordinate="560"/>
@@ -963,11 +986,13 @@
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="InferringCDMBegin" Id="saga_wp1_tra11" To="CDM2SHACLBegin">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/InferringCDMEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="PushingBegin" Id="saga_wp1_tra13" To="IngestBegin-Virtuoso">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/PushingEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
@@ -975,11 +1000,13 @@
                 <xpdl:Transition From="IngestBegin-ES" Id="saga_wp1_tra15" To="DirectIndexationBegin">
                     <xpdl:Condition Type="CONDITION">instance<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/IngestEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="DirectIndexationBegin" Id="saga_wp1_tra16" To="DependencyIndexationBegin">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/DirectIndexationEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
@@ -987,6 +1014,7 @@
                 <xpdl:Transition From="CompensateBegin-ES" Id="saga_wp1_tra17" To="CompensateBegin-S3">
                     <xpdl:Condition Type="CONDITION">nal||cdm<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/CompensateEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="LABEL" ToolId="JaWE">
@@ -997,6 +1025,7 @@
                 <xpdl:Transition From="CompensateBegin-Virtuoso" Id="saga_wp1_tra19" To="CompensatePushingBegin">
                     <xpdl:Condition Type="CONDITION">cdm<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/CompensateEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
@@ -1004,6 +1033,7 @@
                 <xpdl:Transition From="CompensateBegin-ES" Id="saga_wp1_tra20" To="DependencyIndexationBegin">
                     <xpdl:Condition Type="CONDITION">instance<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/CompensateEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="LABEL" ToolId="JaWE">
@@ -1014,6 +1044,7 @@
                 <xpdl:Transition From="IngestBegin-ES" Id="saga_wp1_tra21" To="UnlockBegin">
                     <xpdl:Condition Type="CONDITION">cdm||nal<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/IngestEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="628" YCoordinate="355"/>
@@ -1027,12 +1058,14 @@
                 <xpdl:Transition From="SnapshotDbBegin" Id="saga_wp1_tra22" To="InferringCDMBegin">
                     <xpdl:Condition Type="CONDITION">cdm<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/SnapshotDbEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="SnapshotDbBegin" Id="saga_wp1_tra23" To="InferringSKOSBegin">
                     <xpdl:Condition Type="CONDITION">nal</xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/SnapshotDbEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
@@ -1040,13 +1073,18 @@
                 <xpdl:Transition From="PostlockValidationBegin" Id="saga_wp1_tra24" To="SCBDInfBegin">
                     <xpdl:Condition Type="CONDITION">instance<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/PostlockValidationEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="LABEL" ToolId="JaWE">
+                            <xpdl:Coordinates XCoordinate="500" YCoordinate="10"/>
+                        </xpdl:ConnectorGraphicsInfo>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="CompensateBegin-Virtuoso" Id="saga_wp1_tra25" To="UnlockBegin">
                     <xpdl:Condition Type="CONDITION">instance||nal<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/CompensateEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="897" YCoordinate="564"/>
@@ -1061,6 +1099,7 @@
                 <xpdl:Transition From="CompensatePushingBegin" Id="saga_wp1_tra26" To="UnlockBegin">
                     <xpdl:Condition Type="CONDITION">cdm<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/CompensatePushingEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="868" YCoordinate="616"/>
@@ -1077,6 +1116,7 @@
                 <xpdl:Transition From="DependencyIndexationBegin" Id="saga_wp1_tra27" To="CompensateBegin-S3">
                     <xpdl:Condition Type="CONDITION">compensation&amp;&amp;instance<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/DependencyIndexationEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE">
                             <xpdl:Coordinates XCoordinate="636" YCoordinate="577"/>
@@ -1088,11 +1128,13 @@
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="CompensateBegin-S3" Id="saga_wp1_tra18" To="CompensateBegin-Virtuoso">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/CompensateEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="SCBDInfBegin" Id="saga_wp1_tra9" To="SnapshotDbBegin">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/SCBDInfBegin</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
@@ -1100,16 +1142,19 @@
                 <xpdl:Transition From="PostlockValidationBegin" Id="saga_wp1_tra8" To="SnapshotDbBegin">
                     <xpdl:Condition Type="CONDITION">cdm||nal<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/PostlockValidationEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="InferringSKOSBegin" Id="saga_wp1_tra12" To="IngestBegin-Virtuoso">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/InferringSKOSEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
                 </xpdl:Transition>
                 <xpdl:Transition From="CDM2SHACLBegin" Id="saga_wp1_tra14" To="PushingBegin">
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/CDM2SHACLEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                     </xpdl:ConnectorGraphicsInfos>
@@ -1117,6 +1162,7 @@
                 <xpdl:Transition From="SnapshotDbBegin" Id="saga_wp1_tra28" To="IngestBegin-Virtuoso">
                     <xpdl:Condition Type="CONDITION">instance<xpdl:Expression ScriptType="text/java"/>
                     </xpdl:Condition>
+                    <xpdl:Description>https://raw.githubusercontent.com/op-cellar-git/cellar-transaction/master/apis/asyncapi/sec_service/sec_service.yml#channels/SnapshotDbEnd</xpdl:Description>
                     <xpdl:ConnectorGraphicsInfos>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
                         <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="LABEL" ToolId="JaWE">
