@@ -203,7 +203,7 @@
                     </xpdl:Event>
                     <xpdl:NodeGraphicsInfos>
                         <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="102,204,51" Height="31" IsVisible="true" LaneId="CellarCloud_pool1_lan2" ToolId="JaWE" Width="31">
-                            <xpdl:Coordinates XCoordinate="68" YCoordinate="234"/>
+                            <xpdl:Coordinates XCoordinate="65" YCoordinate="198"/>
                         </xpdl:NodeGraphicsInfo>
                     </xpdl:NodeGraphicsInfos>
                 </xpdl:Activity>
@@ -634,7 +634,7 @@
                     </xpdl:Event>
                     <xpdl:NodeGraphicsInfos>
                         <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="236,120,98" Height="31" IsVisible="true" LaneId="CellarCloud_pool1_lan2" ToolId="JaWE" Width="31">
-                            <xpdl:Coordinates XCoordinate="69" YCoordinate="272"/>
+                            <xpdl:Coordinates XCoordinate="95" YCoordinate="269"/>
                         </xpdl:NodeGraphicsInfo>
                     </xpdl:NodeGraphicsInfos>
                 </xpdl:Activity>
