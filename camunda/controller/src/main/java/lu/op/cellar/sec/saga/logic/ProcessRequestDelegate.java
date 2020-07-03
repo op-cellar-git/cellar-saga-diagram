@@ -9,11 +9,17 @@ public class ProcessRequestDelegate implements JavaDelegate {
   private final static Logger LOGGER = Logger.getLogger("LOAN-REQUESTS");
 
   public void execute(DelegateExecution execution) throws Exception {
-    LOGGER.info("execID         :"+execution.getId());
-    LOGGER.info("activityName   :"+execution.getCurrentActivityName());
-    LOGGER.info("businessKey    :"+execution.getBusinessKey());
-    LOGGER.info("transitionId   :"+execution.getCurrentTransitionId());
-    LOGGER.info("variable       :"+execution.getVariable("flag"));
+    LOGGER.info("----------------------------------------------------------");
+    LOGGER.info("execID               :"+execution.getId());
+    LOGGER.info("activityName         :"+execution.getCurrentActivityName());
+    LOGGER.info("businessKey          :"+execution.getBusinessKey());
+    LOGGER.info("variable             :"+execution.getVariable("last"));
+    LOGGER.info("activityId           :"+execution.getCurrentActivityId());
+    LOGGER.info("variableScopeKey     :"+execution.getVariableScopeKey());
+    LOGGER.info("----------------------------------------------------------");
+    //execution.setProcessBusinessKey(execution.getId());
+    
+    
     
   }
 
