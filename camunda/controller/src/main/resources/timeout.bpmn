@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_01knbiz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
+  <bpmn:collaboration id="Collaboration_0n2i0zu">
+    <bpmn:participant id="Participant_0qwjmiy" name="Asynchronous and stateless timeout checking" processRef="Process_037x1r3" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_037x1r3" isExecutable="true">
+    <bpmn:intermediateThrowEvent id="Event_00h218g">
+      <bpmn:incoming>Flow_1ulpz65</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_04w4uwu" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1edjds3</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0rzuhyk" name="Checking time-out">
+      <bpmn:incoming>Flow_1edjds3</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ulpz65</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1ulpz65" sourceRef="Activity_0rzuhyk" targetRef="Event_00h218g" />
+    <bpmn:sequenceFlow id="Flow_1edjds3" sourceRef="StartEvent_1" targetRef="Activity_0rzuhyk" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0n2i0zu">
+      <bpmndi:BPMNShape id="Participant_0qwjmiy_di" bpmnElement="Participant_0qwjmiy" isHorizontal="true">
+        <dc:Bounds x="160" y="120" width="421" height="320" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ulpz65_di" bpmnElement="Flow_1ulpz65">
+        <di:waypoint x="440" y="280" />
+        <di:waypoint x="502" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1edjds3_di" bpmnElement="Flow_1edjds3">
+        <di:waypoint x="269" y="280" />
+        <di:waypoint x="340" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1jvo7mk_di" bpmnElement="Event_00h218g">
+        <dc:Bounds x="502" y="262" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="233" y="262" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rzuhyk_di" bpmnElement="Activity_0rzuhyk">
+        <dc:Bounds x="340" y="240" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
