@@ -1,4 +1,6 @@
 package lu.op.cellar.sec.saga.logic;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -21,15 +23,21 @@ public class ProcessRequestDelegate implements JavaDelegate {
 		LOGGER.info("activityName         :"+execution.getCurrentActivityName());
 		LOGGER.info("businessKey          :"+execution.getBusinessKey());
 		LOGGER.info("activityId           :"+execution.getCurrentActivityId());
-
-
-		LOGGER.info("var#msg           :"+execution.getVariable("msg").toString());
-		LOGGER.info("var#state         :"+execution.getVariable("state").toString());
-		LOGGER.info("var#compensation  :"+execution.getVariable("compensation").toString());
-		LOGGER.info("var#trace         :"+execution.getVariable("trace").toString());
+		LOGGER.info("var#msg              :"+execution.getVariable("msg").toString());
+		LOGGER.info("var#state            :"+execution.getVariable("state").toString());
+		LOGGER.info("var#compensation     :"+execution.getVariable("compensation").toString());
+		LOGGER.info("var#trace            :"+execution.getVariable("trace").toString());
 		
-		LOGGER.info("SENDING MESSAGE VIA RABBITMQ");
-		SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getCurrentActivityName(), new Boolean(execution.getVariable("compensation").toString()));
+
+		String activity= execution.getVariable("trace").toString();
+		if(!(execution.getCurrentActivityName().contentEquals("end"))) {
+			activity= UUID.randomUUID().toString();
+			TimeUnit.MILLISECONDS.sleep(8);
+			LOGGER.info("SENDING MESSAGE VIA RABBITMQ");
+		}
+		LOGGER.info("var#activity         :"+activity);
+		SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getCurrentActivityName(), new Boolean(execution.getVariable("compensation").toString()), activity);
+
 	}
 
 }

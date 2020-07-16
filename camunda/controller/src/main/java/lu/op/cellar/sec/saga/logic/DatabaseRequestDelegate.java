@@ -19,24 +19,32 @@ public class DatabaseRequestDelegate implements JavaDelegate {
     
     
     String msg = execution.getVariable("msg").toString();
-    if(msg.equals("startup")) {
+    if(msg.equals("Fail")) {
+    	String[] r = SagalogUtilities.retrieveState(execution.getVariable("trace").toString(), execution.getVariable("activity").toString());
+    	execution.setVariableLocal("state", r[0]);
+    	execution.setVariableLocal("compensation", true); 
+    }
+    else if(msg.equals("startup")) {
     	execution.setVariableLocal("state", "");
     	execution.setVariableLocal("trace", execution.getId().toString());
+    	execution.setVariableLocal("activity", execution.getId().toString());
     	execution.setVariableLocal("compensation", false); 
     }
     else {
-    	String[] r = SagalogUtilities.retrieveState(execution.getVariable("trace").toString());
+    	String[] r = SagalogUtilities.retrieveState(execution.getVariable("trace").toString(), execution.getVariable("activity").toString());
     	execution.setVariableLocal("state", r[0]);
-    	execution.setVariableLocal("compensation", new Boolean(r[1]));    	
+    	String c=r[1];
+    	if(c.equals("t")) c = "true";
+    	else if(c.equals("f")) c = "false";
+    	execution.setVariableLocal("compensation", new Boolean(c));    	
     }
 
     LOGGER.info("var#msg           :"+execution.getVariable("msg").toString());
     LOGGER.info("var#state         :"+execution.getVariable("state").toString());
     LOGGER.info("var#compensation  :"+execution.getVariable("compensation").toString());
     LOGGER.info("var#trace         :"+execution.getVariable("trace").toString());
-    SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getVariable("msg").toString(), new Boolean(execution.getVariable("compensation").toString()));
-    
+    LOGGER.info("var#activity      :"+execution.getVariable("activity").toString());
+    SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getVariable("msg").toString(), new Boolean(execution.getVariable("compensation").toString()), execution.getVariable("activity").toString());
     
   }
-
 }

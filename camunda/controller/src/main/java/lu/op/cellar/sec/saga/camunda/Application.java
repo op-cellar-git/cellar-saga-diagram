@@ -23,10 +23,8 @@ public class Application {
 		Map<String, Object> mapVars=new HashMap<String, Object>();
 		String[] corp = corpus.split(" ");
 		mapVars.put("msg",corp[0]);
-		mapVars.put("compensation", new Boolean(corp[1]));
-		mapVars.put("trace",corp[2]);
-		//processEngine.getRuntimeService().startProcessInstanceByKey("Process_0neapjn", "123", mapVars);
-		//processEngine.getRuntimeService().startProcessInstanceByMessage("Process_0neapjn", "123", mapVars);
+		mapVars.put("trace",corp[1]);
+		mapVars.put("activity",corp[2]);
 		processEngine.getRuntimeService().startProcessInstanceByMessage("start", mapVars);
 	}
 
@@ -44,7 +42,9 @@ public class Application {
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			String corpus = new String(delivery.getBody(), "UTF-8");
 			LOGGER.info("Rabbitmq: Message received '" + corpus + "'");
-			Application.start(processEngine, corpus);
+			try {
+				Application.start(processEngine, corpus);
+			} catch (Exception e ) { e.printStackTrace(); }
 		};
 		channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
 	}

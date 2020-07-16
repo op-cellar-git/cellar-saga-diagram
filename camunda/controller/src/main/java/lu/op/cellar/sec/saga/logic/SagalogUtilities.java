@@ -14,11 +14,11 @@ public class SagalogUtilities {
 	public static String param2 = "postgres";
     public static String param3 ="cellar";
 
-	public static String[] retrieveState(String saga_id) throws SQLException, ClassNotFoundException {
+	public static String[] retrieveState(String saga_id, String activity_id) throws SQLException, ClassNotFoundException {
 		Class.forName("org.postgresql.Driver");
 		Connection c = DriverManager.getConnection(param1, param2,  param3);
 		Statement st = c.createStatement();
-		ResultSet rs = st.executeQuery("select saga_id, state, max(time_stamp) as time_stamp, compensation from sagalog where saga_id = '"+saga_id+"' group by saga_id, state, compensation");
+		ResultSet rs = st.executeQuery("select saga_id, state, time_stamp, compensation from sagalog where saga_id = '"+saga_id+"' and activity_id = '"+activity_id+"'");
 		rs.next();
 		String[] result = new String[2];
 		result[0] = rs.getString("state"); //state
@@ -26,17 +26,16 @@ public class SagalogUtilities {
 		return result;
 		
 	}
-	public static void writeRecord(String saga_id, String state, boolean compensation) throws SQLException, ClassNotFoundException {
+	public static void writeRecord(String saga_id, String state, boolean compensation, String activity_id) throws SQLException, ClassNotFoundException {
 		Class.forName("org.postgresql.Driver");
 		Connection c = DriverManager.getConnection(param1, param2,  param3);
-		PreparedStatement st = c.prepareStatement("INSERT INTO SAGALOG (saga_id, state, time_stamp, compensation) VALUES (?, ?, ?, ?)");
+		PreparedStatement st = c.prepareStatement("INSERT INTO SAGALOG (saga_id, state, time_stamp, compensation, activity_id) VALUES (?, ?, ?, ?, ?)");
 		st.setString(1, saga_id);
 		st.setString(2, state);
 		st.setTimestamp(3, new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
 		st.setBoolean(4, compensation);
-		st.executeUpdate();
+		st.setString(5, activity_id);
+		st.execute();
 		st.close();
-
 	}
-	
 }
