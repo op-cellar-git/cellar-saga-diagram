@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0n58qhl" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
   <bpmn:collaboration id="Collaboration_1wpufm0">
-    <bpmn:participant id="Participant_1p59lfb" name="Asynchronous and stateless workflow" processRef="Process_0neapjn" />
+    <bpmn:participant id="Participant_1p59lfb" name="Asynchronous and stateless workflow" processRef="Cellar-SEC-Workflow" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_0neapjn" isExecutable="true">
+  <bpmn:process id="Cellar-SEC-Workflow" isExecutable="true">
     <bpmn:sequenceFlow id="Flow_01035yx" sourceRef="StartEvent_1" targetRef="Activity_1m8s4sr" />
     <bpmn:sequenceFlow id="Flow_0gy11y8" sourceRef="Activity_1v0gw2v" targetRef="Event_0cdig4h" />
     <bpmn:sequenceFlow id="Flow_0z0gp7f" sourceRef="Activity_03hfewe" targetRef="Event_082bdtq" />
