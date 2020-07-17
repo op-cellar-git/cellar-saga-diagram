@@ -3,6 +3,8 @@ import java.util.logging.Logger;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
+import lu.op.cellar.sec.saga.utilities.SagalogUtilities;
+
 //https://docs.camunda.org/get-started/java-process-app/service-task/
 public class DatabaseRequestDelegate implements JavaDelegate {
 
@@ -16,6 +18,7 @@ public class DatabaseRequestDelegate implements JavaDelegate {
     LOGGER.info("activityName         :"+execution.getCurrentActivityName());
     LOGGER.info("businessKey          :"+execution.getBusinessKey());
     LOGGER.info("activityId           :"+execution.getCurrentActivityId());
+    LOGGER.info("trace                :"+execution.getVariable("trace").toString()+"|"+execution.getVariable("activity").toString());
     
     
     String msg = execution.getVariable("msg").toString();

@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
+import lu.op.cellar.sec.saga.utilities.SagalogUtilities;
+
 //https://docs.camunda.org/get-started/java-process-app/service-task/
 public class ProcessRequestDelegate implements JavaDelegate {
 
