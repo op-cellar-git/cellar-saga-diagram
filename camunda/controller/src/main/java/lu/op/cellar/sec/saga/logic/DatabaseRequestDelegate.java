@@ -39,15 +39,19 @@ public class DatabaseRequestDelegate implements JavaDelegate {
     	String c=r[1];
     	if(c.equals("t")) c = "true";
     	else if(c.equals("f")) c = "false";
-    	execution.setVariableLocal("compensation", new Boolean(c));    	
+    	execution.setVariableLocal("compensation", new Boolean(c));  
+    	execution.setVariableLocal("state_params", r[2]);
+    	LOGGER.info("var#state_params        :"+execution.getVariable("state_params").toString());
     }
 
     LOGGER.info("var#msg           :"+execution.getVariable("msg").toString());
+    LOGGER.info("var#msg_params    :"+execution.getVariable("msg_params").toString());
     LOGGER.info("var#state         :"+execution.getVariable("state").toString());
+    
     LOGGER.info("var#compensation  :"+execution.getVariable("compensation").toString());
     LOGGER.info("var#trace         :"+execution.getVariable("trace").toString());
     LOGGER.info("var#activity      :"+execution.getVariable("activity").toString());
-    SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getVariable("msg").toString(), new Boolean(execution.getVariable("compensation").toString()), execution.getVariable("activity").toString());
+    SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getVariable("msg").toString(), new Boolean(execution.getVariable("compensation").toString()), execution.getVariable("activity").toString(), execution.getVariable("msg_params").toString());
     
   }
 }
