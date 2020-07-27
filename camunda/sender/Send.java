@@ -16,8 +16,8 @@ public class Send {
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            //<msg, trace_id, activity_id>
-            String message = "CleanUpEnd 084834f1-c767-11ea-93e3-d89c67c87228 d9413186-e4b1-4ac3-a0b2-96677afe2987";
+            //<msg, trace_id, activity_id, params>
+            String message = "CleanUpEnd b7e78e0a-cdbd-11ea-af0f-da9c67c87227 a969b7fb-5ffe-4d7f-b76f-34638b9227e1 null";
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
             System.out.println(" [x] Sent '" + message + "'");
         }

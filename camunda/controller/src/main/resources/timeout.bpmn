@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_01knbiz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
+  <bpmn:collaboration id="Collaboration_0n2i0zu">
+    <bpmn:participant id="Participant_0qwjmiy" name="Asynchronous and stateless timeout checking" processRef="Cellar-SEC-Timeout" />
+  </bpmn:collaboration>
+  <bpmn:process id="Cellar-SEC-Timeout" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1edjds3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0nbc5bh</bpmn:outgoing>
+      <bpmn:outgoing>Flow_13ta2ok</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_0rzuhyk" name="PrelockValidation" camunda:class="lu.op.cellar.sec.saga.logic.TimeoutRequestDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="threshold">00:05:00</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1edjds3</bpmn:incoming>
+      <bpmn:incoming>Flow_1bicku9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1v5tbv6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0xumcrm" name="Lock" camunda:class="lu.op.cellar.sec.saga.logic.TimeoutRequestDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="threshold">00:05:00</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0nbc5bh</bpmn:incoming>
+      <bpmn:incoming>Flow_0bxi3tw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0osnf36</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateCatchEvent id="Event_1thwxu8">
+      <bpmn:incoming>Flow_0osnf36</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bxi3tw</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0xpaya8">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R/PT5M</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="Event_01chegr">
+      <bpmn:incoming>Flow_0v3hiin</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hmurvb</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_00le696">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R/PT5M</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="Event_0if0k55">
+      <bpmn:incoming>Flow_1v5tbv6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bicku9</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_03l6w38">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R/PT5M</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="Activity_15py1u7" name="CleanUp" camunda:class="lu.op.cellar.sec.saga.logic.TimeoutRequestDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="threshold">00:05:00</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_13ta2ok</bpmn:incoming>
+      <bpmn:incoming>Flow_1hmurvb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0v3hiin</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1edjds3" sourceRef="StartEvent_1" targetRef="Activity_0rzuhyk" />
+    <bpmn:sequenceFlow id="Flow_1v5tbv6" sourceRef="Activity_0rzuhyk" targetRef="Event_0if0k55" />
+    <bpmn:sequenceFlow id="Flow_0nbc5bh" sourceRef="StartEvent_1" targetRef="Activity_0xumcrm" />
+    <bpmn:sequenceFlow id="Flow_1bicku9" sourceRef="Event_0if0k55" targetRef="Activity_0rzuhyk" />
+    <bpmn:sequenceFlow id="Flow_13ta2ok" sourceRef="StartEvent_1" targetRef="Activity_15py1u7" />
+    <bpmn:sequenceFlow id="Flow_0osnf36" sourceRef="Activity_0xumcrm" targetRef="Event_1thwxu8" />
+    <bpmn:sequenceFlow id="Flow_0bxi3tw" sourceRef="Event_1thwxu8" targetRef="Activity_0xumcrm" />
+    <bpmn:sequenceFlow id="Flow_0v3hiin" sourceRef="Activity_15py1u7" targetRef="Event_01chegr" />
+    <bpmn:sequenceFlow id="Flow_1hmurvb" sourceRef="Event_01chegr" targetRef="Activity_15py1u7" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0n2i0zu">
+      <bpmndi:BPMNShape id="Participant_0qwjmiy_di" bpmnElement="Participant_0qwjmiy" isHorizontal="true">
+        <dc:Bounds x="160" y="110" width="565" height="380" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1edjds3_di" bpmnElement="Flow_1edjds3">
+        <di:waypoint x="269" y="300" />
+        <di:waypoint x="320" y="300" />
+        <di:waypoint x="320" y="190" />
+        <di:waypoint x="370" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1v5tbv6_di" bpmnElement="Flow_1v5tbv6">
+        <di:waypoint x="470" y="170" />
+        <di:waypoint x="522" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nbc5bh_di" bpmnElement="Flow_0nbc5bh">
+        <di:waypoint x="269" y="300" />
+        <di:waypoint x="370" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bicku9_di" bpmnElement="Flow_1bicku9">
+        <di:waypoint x="540" y="188" />
+        <di:waypoint x="540" y="210" />
+        <di:waypoint x="470" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13ta2ok_di" bpmnElement="Flow_13ta2ok">
+        <di:waypoint x="269" y="300" />
+        <di:waypoint x="320" y="300" />
+        <di:waypoint x="320" y="410" />
+        <di:waypoint x="370" y="410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0osnf36_di" bpmnElement="Flow_0osnf36">
+        <di:waypoint x="470" y="280" />
+        <di:waypoint x="522" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bxi3tw_di" bpmnElement="Flow_0bxi3tw">
+        <di:waypoint x="540" y="298" />
+        <di:waypoint x="540" y="320" />
+        <di:waypoint x="470" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0v3hiin_di" bpmnElement="Flow_0v3hiin">
+        <di:waypoint x="470" y="390" />
+        <di:waypoint x="522" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hmurvb_di" bpmnElement="Flow_1hmurvb">
+        <di:waypoint x="540" y="408" />
+        <di:waypoint x="540" y="430" />
+        <di:waypoint x="470" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="233" y="282" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xy8iwx_di" bpmnElement="Activity_0rzuhyk">
+        <dc:Bounds x="370" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_033p37k_di" bpmnElement="Activity_0xumcrm">
+        <dc:Bounds x="370" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yj900n_di" bpmnElement="Event_1thwxu8">
+        <dc:Bounds x="522" y="262" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_053mekh_di" bpmnElement="Event_01chegr">
+        <dc:Bounds x="522" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06u7kfp_di" bpmnElement="Event_0if0k55">
+        <dc:Bounds x="522" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ud8woc_di" bpmnElement="Activity_15py1u7">
+        <dc:Bounds x="370" y="370" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
