@@ -27,11 +27,11 @@ public class DatabaseRequestDelegate implements JavaDelegate {
     	execution.setVariableLocal("state", r[0]);
     	execution.setVariableLocal("compensation", true); 
     }
-    else if(msg.equals("startup")) {
-    	execution.setVariableLocal("state", "");
-    	execution.setVariableLocal("trace", execution.getId().toString());
-    	execution.setVariableLocal("activity", execution.getId().toString());
-    	execution.setVariableLocal("compensation", false); 
+    else if(msg.equals("Startup")) {
+    	execution.setVariable("state", "");
+    	execution.setVariable("trace", execution.getId().toString());
+    	execution.setVariable("activity", execution.getId().toString());
+    	execution.setVariable("compensation", false); 
     }
     else {
     	String[] r = SagalogUtilities.retrieveState(execution.getVariable("trace").toString(), execution.getVariable("activity").toString());
@@ -47,7 +47,6 @@ public class DatabaseRequestDelegate implements JavaDelegate {
     LOGGER.info("var#msg           :"+execution.getVariable("msg").toString());
     LOGGER.info("var#msg_params    :"+execution.getVariable("msg_params").toString());
     LOGGER.info("var#state         :"+execution.getVariable("state").toString());
-    
     LOGGER.info("var#compensation  :"+execution.getVariable("compensation").toString());
     LOGGER.info("var#trace         :"+execution.getVariable("trace").toString());
     LOGGER.info("var#activity      :"+execution.getVariable("activity").toString());

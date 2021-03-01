@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_0mhb58c" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
+  <decision id="Cellar-SEC-DecisionTable" name="Decision 1">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="msg" camunda:inputVariable="msg">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0kf72bj" label="state" camunda:inputVariable="state">
+        <inputExpression id="LiteralExpression_0bdtpfy" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="new" name="new" typeRef="string" />
+      <rule id="DecisionRule_1fox7w0">
+        <inputEntry id="UnaryTests_13pj6ek">
+          <text>"Startup"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i632bp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1p7mxac">
+          <text>"Pre-lockValidationBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0al1gt4">
+        <inputEntry id="UnaryTests_1ado4en">
+          <text>"SnapshotValidationEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hx0oog">
+          <text>"SnapshotValidationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uxr55p">
+          <text>"Post-lockValidationBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_031wkj8">
+        <inputEntry id="UnaryTests_04fgabi">
+          <text>"RollbackConfigsEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w7r9ka">
+          <text>"RollbackConfigsBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0er8q3u">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oqvfih">
+        <inputEntry id="UnaryTests_13t255p">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04v1f9v">
+          <text>"Post-lockValidationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_143kdn8">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wv4cgv">
+        <inputEntry id="UnaryTests_1wotafp">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hztol6">
+          <text>"LockBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0glk093">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11e1jh7">
+        <inputEntry id="UnaryTests_0iwl510">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06hxlky">
+          <text>"SnapshotValidationBegin'"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19yypfk">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j11ulf">
+        <inputEntry id="UnaryTests_0xsgkhe">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qg66vz">
+          <text>"SnapshotIndexationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14c29tb">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sh22c4">
+        <inputEntry id="UnaryTests_11wvxi9">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wp12pd">
+          <text>"SnapshotS3Begin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1siof1y">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18mf5b5">
+        <inputEntry id="UnaryTests_0bj1plv">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z3pcd8">
+          <text>"SnapshotVirtuosoBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00xwyj0">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1a2ku2q">
+        <inputEntry id="UnaryTests_1re4vda">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n0oehu">
+          <text>"SnapshotESBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hxh3io">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jlygq4">
+        <inputEntry id="UnaryTests_0k9r97p">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13ik2j8">
+          <text>"SnapshotRDBMSBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09xr837">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vowfb4">
+        <inputEntry id="UnaryTests_1imdeyz">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qgdjrv">
+          <text>"ConfigsBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jess78">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0v9jhqk">
+        <inputEntry id="UnaryTests_0s47b64">
+          <text>"IndexationEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uqwm6a">
+          <text>"IndexationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15sxo8t">
+          <text>"UnlockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vannoj">
+        <inputEntry id="UnaryTests_0u9d3pc">
+          <text>"Pre-lockValidationEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07fvbaa">
+          <text>"Pre-lockValidationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fglo74">
+          <text>"LockBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1llsjc2">
+        <inputEntry id="UnaryTests_1fjqrp9">
+          <text>"Post-lockValidationEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hru032">
+          <text>"Post-lockValidationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06mdxju">
+          <text>"SnapshotIndexationBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wbyj04">
+        <inputEntry id="UnaryTests_1vmjj4h">
+          <text>"LockEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yko4on">
+          <text>"LockBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_126jvi0">
+          <text>"SnapshotValidationBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fe8116">
+        <inputEntry id="UnaryTests_02m1oqj">
+          <text>"RollbackS3End"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_110d49m">
+          <text>"RollbackS3Begin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mckth7">
+          <text>"RollbackVirtuosoBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mdvf2i">
+        <inputEntry id="UnaryTests_01b1gwd">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1czenne">
+          <text>"IngestionVirtuosoBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08hlb8l">
+          <text>"RollbackVirtuosoBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hskp31">
+        <inputEntry id="UnaryTests_17ov4ay">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mat5ip">
+          <text>"RollbackVirtuosoBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03mz79f">
+          <text>"RollbackVirtuosoBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jwonyu">
+        <inputEntry id="UnaryTests_00m6od5">
+          <text>"SnapshotIndexationEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_033ijxv">
+          <text>"SnapshotIndexationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wgf33j">
+          <text>"SnapshotVirtuosoBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19l3dnl">
+        <inputEntry id="UnaryTests_1n6to67">
+          <text>"PushConfigsEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_091qggp">
+          <text>"PushConfigsBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gpw3pi">
+          <text>"IngestionVirtuosoBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bvexby">
+        <inputEntry id="UnaryTests_1tckn2s">
+          <text>"RollbackRDBMSEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08tjjui">
+          <text>"RollbackRDBMSBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ndlojx">
+          <text>"RollbackS3Begin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mnb2te">
+        <inputEntry id="UnaryTests_07fcz15">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rghu9o">
+          <text>"IngestionS3Begin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wtlrdf">
+          <text>"RollbackS3Begin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16dxri6">
+        <inputEntry id="UnaryTests_08z7mz1">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sa1hhg">
+          <text>"RollbackS3Begin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r0cmls">
+          <text>"RollbackS3Begin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18bktbz">
+        <inputEntry id="UnaryTests_1vubd13">
+          <text>"SnapshotVirtuosoEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_133mb3e">
+          <text>"SnapshotVirtuosoBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w1cgqd">
+          <text>"SnapshotS3Begin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1doal38">
+        <inputEntry id="UnaryTests_151sa6z">
+          <text>"IngestionVirtuosoEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u9fpxf">
+          <text>"IngestionVirtuosoBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tjpedl">
+          <text>"IngestionS3Begin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04hb6c0">
+        <inputEntry id="UnaryTests_1duvzhy">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19oldqg">
+          <text>"IngestionESBegin'"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00oa0rx">
+          <text>"RollbackESBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ixa5m5">
+        <inputEntry id="UnaryTests_1sexomz">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c65f5y">
+          <text>"RollbackESBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02s0i0b">
+          <text>"RollbackESBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08r5vzu">
+        <inputEntry id="UnaryTests_048ldhr">
+          <text>"SnapshotRDBMSEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ezq7pj">
+          <text>"SnapshotRDBMSBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xld1hh">
+          <text>"SnapshotESBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_020lzez">
+        <inputEntry id="UnaryTests_0jh36aw">
+          <text>"IngestionRDBMSEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hap5oz">
+          <text>"IngestionRDBMSBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1buclkb">
+          <text>"IngestionESBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1uj2eu5">
+        <inputEntry id="UnaryTests_1akp6x1">
+          <text>"RollbackIndexationEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v0f2o3">
+          <text>"RollbackIndexationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vjlse0">
+          <text>"RollbackRDBMSBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08ohzpd">
+        <inputEntry id="UnaryTests_1vuf3r1">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d5ed0t">
+          <text>"IngestionRDBMSBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16rqn9e">
+          <text>"RollbackRDBMSBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zo7kpq">
+        <inputEntry id="UnaryTests_0cp33ey">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17ksm7c">
+          <text>"RollbackRDBMSBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xx9cyj">
+          <text>"RollbackRDBMSBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dy6695">
+        <inputEntry id="UnaryTests_0uwe2qz">
+          <text>"SnapshotS3End"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14txz8x">
+          <text>"SnapshotS3Begin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b1ssxw">
+          <text>"SnapshotRDBMSBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kf0kmf">
+        <inputEntry id="UnaryTests_1bddycy">
+          <text>"IngestionS3End"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fu3hcz">
+          <text>"IngestionS3Begin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0au72h8">
+          <text>"IngestionRDBMSBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c0z7e9">
+        <inputEntry id="UnaryTests_1fw1n0l">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lt3hmm">
+          <text>"RollbackIndexationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i1jqoq">
+          <text>"RollbackIndexationBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fgnmvz">
+        <inputEntry id="UnaryTests_0ru3r2r">
+          <text>"RollbackESEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lhj0ey">
+          <text>"RollbackESBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19hvubf">
+          <text>"RollbackIndexationBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15k9809">
+        <inputEntry id="UnaryTests_1fm5gdo">
+          <text>"IngestionESEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ygofnx">
+          <text>"IngestionESBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ln98hk">
+          <text>"IndexationBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_177ve3u">
+        <inputEntry id="UnaryTests_06kt4dt">
+          <text>"RollbackVirtuosoEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17a8yud">
+          <text>"RollbackVirtuosoBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fh32v0">
+          <text>"RollbackConfigsBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oel2a8">
+        <inputEntry id="UnaryTests_10h2il7">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k3d8ir">
+          <text>"PushConfigsBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ff5b8v">
+          <text>"RollbackConfigsBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nnkz4w">
+        <inputEntry id="UnaryTests_05rloqx">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tg2vrh">
+          <text>"RollbackConfigsBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c92fdn">
+          <text>"RollbackConfigsBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gco37w">
+        <inputEntry id="UnaryTests_12syk8o">
+          <text>"ConfigsEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xi162k">
+          <text>"ConfigsBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jalv0f">
+          <text>"PushConfigsBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02dzvzp">
+        <inputEntry id="UnaryTests_1ikhixh">
+          <text>"SnapshotESEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dnygb7">
+          <text>"SnapshotESBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1aqqirm">
+          <text>"ConfigsBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08rtv6a">
+        <inputEntry id="UnaryTests_1jwm0gf">
+          <text>"UnlockEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zpe5bi">
+          <text>"UnlockBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hk6v3t">
+          <text>"CleanupBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02m1s5k">
+        <inputEntry id="UnaryTests_0dsydk9">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w981wj">
+          <text>"CleanupBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_136oejl">
+          <text>"CleanupBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10pmdfc">
+        <inputEntry id="UnaryTests_0ew3crf">
+          <text>"Fail"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1419b4c">
+          <text>"Pre-lockValidationBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yafyov">
+          <text>"CleanupBegin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0yaxvie">
+        <inputEntry id="UnaryTests_1qa9dyz">
+          <text>"CleanupEnd"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16qn2yl">
+          <text>"CleanupBegin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12viu1l">
+          <text>"end"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1jojo20">
+      <dmndi:DMNShape id="DMNShape_1ejlz5f" dmnElementRef="Cellar-SEC-DecisionTable">
+        <dc:Bounds height="80" width="180" x="150" y="75" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

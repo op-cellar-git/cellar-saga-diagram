@@ -1,4 +1,5 @@
-package test.rabbitmq.demo;
+package com.example.sender;
+
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -6,7 +7,7 @@ import com.rabbitmq.client.ConnectionFactory;
 
 import java.nio.charset.StandardCharsets;
 
-public class Send {
+public class App {
 
     private final static String QUEUE_NAME = "hello";
 
@@ -17,7 +18,7 @@ public class Send {
              Channel channel = connection.createChannel()) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             //<msg, trace_id, activity_id, params>
-            String message = "CleanUpEnd b7e78e0a-cdbd-11ea-af0f-da9c67c87227 a969b7fb-5ffe-4d7f-b76f-34638b9227e1 null";
+            String message = "Pre-lockValidationEnd 980d4003-7a8b-11eb-b526-d89c67c87228 3751e309-3c1b-44ae-bad9-854c6c05a9ef null";
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
             System.out.println(" [x] Sent '" + message + "'");
         }

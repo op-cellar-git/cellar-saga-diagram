@@ -26,6 +26,7 @@ public class Application {
 		mapVars.put("trace",corp[1]);
 		mapVars.put("activity",corp[2]);
 		mapVars.put("msg_params", corp[3]);
+		//mapVars.put("new", "");
 		processEngine.getRuntimeService().startProcessInstanceByMessage("start", mapVars);
 	}
 

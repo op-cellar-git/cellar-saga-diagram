@@ -24,7 +24,7 @@ public class ProcessRequestDelegate implements JavaDelegate {
 		LOGGER.info("var#state            :"+execution.getVariable("state").toString());
 		LOGGER.info("var#compensation     :"+execution.getVariable("compensation").toString());
 		LOGGER.info("var#trace            :"+execution.getVariable("trace").toString());
-		
+		LOGGER.info("var#new            :"+execution.getVariable("new").toString());
 
 		String activity= execution.getVariable("trace").toString();
 		if(!(execution.getCurrentActivityName().contentEquals("end"))) {
@@ -40,7 +40,7 @@ public class ProcessRequestDelegate implements JavaDelegate {
 		} catch(java.lang.NullPointerException e) { params = "null"; }
 		
 		
-		SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getCurrentActivityName(), new Boolean(execution.getVariable("compensation").toString()), activity, params);
+		SagalogUtilities.writeRecord(execution.getVariable("trace").toString(), execution.getVariable("new").toString(), new Boolean(execution.getVariable("compensation").toString()), activity, params);
 
 	}
 
